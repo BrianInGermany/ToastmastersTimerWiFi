@@ -1,15 +1,19 @@
 /*
  * Toastmasters Timer LED Matrix Webserver
+ *
  *Many thanks to Brian Lough for the setup of the MAtrix:
  *https://www.hackster.io/brian-lough/rgb-led-matrix-with-an-esp8266-a16fa9
  *
+ *IMPORTANT NOTE: This project requires a reset button! Just connect a physical button between RST and Ground. 
+ *There is no other way to reset the timer ...
  *
- *
- *Connect to ADHOC Network "TM Timer" to input your wifi password and select network ssid.
+ *Instructions:
+ *Connect to ADHOC Network "TM Timer" and you will be rerouted to a config page. Click Configure Wifi 
+ *to select network ssid and input your wifi password.
  *
  * Connect to "http://TMTimer.local" or the IP Address shown on board
- * to bring up an HTML form to control the connected LED Matrix. 
- * 
+ * to bring up an HTML form to control the connected LED Matrix.
+ * You can set the times for timer to turn green, yellow, and red.
  *
  * 
 */
@@ -490,7 +494,7 @@ void setup(void)
   server.onNotFound(handleNotFound);
 
   server.begin();
-  Serial.print("Connect to http://tmtimer.local or IP shown on display");
+  Serial.print("Connect to http://TMTimer.local or IP shown on display");
   Serial.println(WiFi.localIP());
   instructions();
 }
